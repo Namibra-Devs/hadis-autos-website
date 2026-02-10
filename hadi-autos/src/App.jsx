@@ -11,8 +11,7 @@ import Inquiries from '@pages/Admin/Inquiries'
 import Content from '@pages/Admin/Content'
 import NotFound from '@pages/NotFound'
 import PrivateRoute from '@components/shared/PrivateRoute'
-import './index.css' // Changed from ./styles/globals.css
-
+import './index.css' 
 function App() {
   return (
     <Router>

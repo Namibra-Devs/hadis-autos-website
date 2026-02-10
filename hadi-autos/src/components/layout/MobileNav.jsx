@@ -21,7 +21,7 @@ const MobileNav = ({ isOpen, onClose }) => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out md:hidden ${
+        className={`fixed top-0 right-0 h-full w-full bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out md:hidden ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -59,7 +59,7 @@ const MobileNav = ({ isOpen, onClose }) => {
           </nav>
 
           {/* Contact Info */}
-          <div className="mt-8 pt-8 border-t border-gray-200">
+          <div className="mt-15 pt-8 border-t border-gray-200">
             <a
               href="tel:+1234567890"
               className="flex items-center space-x-3 text-gray-700 hover:text-primary-600 mb-4"
@@ -71,7 +71,7 @@ const MobileNav = ({ isOpen, onClose }) => {
               href="https://wa.me/1234567890"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full bg-green-600 hover:bg-green-700"
+              className="w-full bg-green-600 hover:bg-green-700 mt-4"
             >
               <MessageCircle className="w-5 h-5 mr-2" />
               WhatsApp

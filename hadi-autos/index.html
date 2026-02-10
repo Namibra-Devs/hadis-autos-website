@@ -1,16 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Basic Meta Tags -->
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hadi's Motors - Canada to Ghana Vehicle Import</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>Hadi's Motors | Import Quality Vehicles from Canada to Ghana</title>
+    <meta name="title" content="Hadi's Motors | Import Quality Vehicles from Canada to Ghana">
+    <meta name="description" content="Import reliable, inspected vehicles from Canada to Ghana. Get transparent pricing, shipment handling, and expert assistance. Browse available cars today!">
+    <meta name="keywords" content="import cars Canada to Ghana, used vehicles Canada, car shipping Ghana, vehicle import services, Canadian cars Ghana, Hadi's Motors">
+    <meta name="author" content="Hadi's Motors">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hadismotors.com/">
+    <meta property="og:title" content="Hadi's Motors | Import Quality Vehicles from Canada to Ghana">
+    <meta property="og:description" content="Import reliable, inspected vehicles from Canada to Ghana. Get transparent pricing, shipment handling, and expert assistance.">
+    <meta property="og:image" content="https://hadismotors.com/images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadismotors.com/">
+    <meta property="twitter:title" content="Hadi's Motors | Import Quality Vehicles from Canada to Ghana">
+    <meta property="twitter:description" content="Import reliable, inspected vehicles from Canada to Ghana. Get transparent pricing, shipment handling, and expert assistance.">
+    <meta property="twitter:image" content="https://hadismotors.com/images/twitter-image.jpg">
+    
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/svg+xml" href="/Logo.jpeg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#0284c7">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hadismotors.com">
+    
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "Hadi's Motors",
+      "description": "Import quality vehicles from Canada to Ghana",
+      "url": "https://hadismotors.com",
+      "logo": "https://hadismotors.com/images/logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Toronto",
+        "addressRegion": "ON",
+        "addressCountry": "CA"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1234567890",
+        "contactType": "Customer Service",
+        "areaServed": ["CA", "GH"],
+        "availableLanguage": ["English"]
+      },
+      "sameAs": [
+        "https://facebook.com/hadismotors",
+        "https://instagram.com/hadismotors",
+        "https://twitter.com/hadismotors"
+      ]
+    }
+    </script>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="/Logo.jpeg" as="image">
+    
+    <!-- CSS (will be injected by Vite) -->
   </head>
   <body>
+   
+    
     <div id="root"></div>
+    
+    <!-- Noscript fallback -->
+    <noscript>
+      <div style="text-align: center; padding: 2rem;">
+        <h1>Hadi's Motors</h1>
+        <p>JavaScript is required to run this application. Please enable JavaScript to continue.</p>
+        <p>You can also contact us at: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+      </div>
+    </noscript>
+    
     <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Google Analytics (Add your own ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
   </body>
 </html>
