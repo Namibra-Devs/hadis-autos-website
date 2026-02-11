@@ -123,4 +123,346 @@ body {
 
 .animate-slide-up {
   animation: slideUp 0.3s ease-out;
+}/* Custom animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes ping-slow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-ping-slow {
+  animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+/* Smooth transitions */
+.transition-all-1000 {
+  transition: all 1000ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* Custom scrollbar for hero */
+.hero-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.hero-slider {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+/* Overlap Scroll Hero Animations */
+@keyframes word-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-from-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(100vh) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slide-in-from-top {
+  from {
+    opacity: 0;
+    transform: translateY(-100vh) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slide-out-to-bottom {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100vh) scale(0.9);
+  }
+}
+
+@keyframes slide-out-to-top {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100vh) scale(0.9);
+  }
+}
+
+/* Animation Classes */
+.animate-word-in {
+  animation: word-in 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide-container {
+  will-change: transform, opacity;
+}
+
+.slide-container.slide-active {
+  animation: slide-in-from-bottom 0.8s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.slide-container.slide-inactive {
+  pointer-events: none;
+}
+
+/* Scroll down: new slide comes from bottom */
+.slide-container:nth-child(n+2).slide-active {
+  animation: slide-in-from-bottom 0.8s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+/* Scroll up: new slide comes from top */
+.slide-container.slide-active ~ .slide-container.slide-inactive {
+  animation: slide-out-to-bottom 0.8s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.slide-container.slide-inactive ~ .slide-container.slide-active {
+  animation: slide-in-from-top 0.8s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but allow scrolling */
+.hero-scroll-area {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hero-scroll-area::-webkit-scrollbar {
+  display: none;
+}
+
+/* Performance optimizations */
+* {
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Fixed background for parallax */
+.bg-fixed {
+  background-attachment: fixed;
+}
+
+/* Glass effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Pulse animation for indicators */
+@keyframes ping-slow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.animate-ping-slow {
+  animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Flipbook Hero Animations */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes flipbook-in-from-bottom {
+  0% {
+    opacity: 0;
+    transform: translateY(100px) rotateX(-10deg);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes flipbook-in-from-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px) rotateX(10deg);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes flipbook-out-to-bottom {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100px) rotateX(10deg);
+    filter: blur(5px);
+  }
+}
+
+@keyframes flipbook-out-to-top {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) rotateX(-10deg);
+    filter: blur(5px);
+  }
+}
+
+/* Animation Classes */
+.animate-pulse-slow {
+  animation: pulse-slow 2s ease-in-out infinite;
+}
+
+.animate-ping-slow {
+  animation: ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+/* Flipbook Page Transitions */
+.flipbook-page-enter-bottom {
+  animation: flipbook-in-from-bottom 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.flipbook-page-enter-top {
+  animation: flipbook-in-from-top 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.flipbook-page-exit-bottom {
+  animation: flipbook-out-to-bottom 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.flipbook-page-exit-top {
+  animation: flipbook-out-to-top 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* 3D Perspective */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Glass Morphism */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar */
+.flipbook-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.flipbook-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Performance Optimizations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fixed Background */
+.fixed-bg {
+  background-attachment: fixed !important;
 }

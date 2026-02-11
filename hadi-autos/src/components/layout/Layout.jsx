@@ -1,12 +1,15 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
 
 const Layout = () => {
+  const location = useLocation()
+  const isHomePage = location.pathname === '/'
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className={`flex flex-col ${isHomePage ? '' : 'min-h-screen'}`}>
       <Header />
-      <main className="flex-1">
+      <main className="flex-1 w-full">
         <Outlet />
       </main>
       <Footer />
