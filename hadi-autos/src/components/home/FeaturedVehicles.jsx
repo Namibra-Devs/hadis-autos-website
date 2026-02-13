@@ -1,57 +1,55 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { ChevronLeft, ChevronRight, Truck, Sparkles } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
-import VehicleCard from '@components/ui/VehicleCard'
-import { vehicleData } from '@utils/data'
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { ChevronLeft, ChevronRight, Truck, Sparkles } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import VehicleCard from "@components/ui/VehicleCard";
+import { vehicleData } from "@utils/data";
 
 const PremiumCarShowSlider = () => {
-  const [currentPage, setCurrentPage] = useState(0)
-  
+  const [currentPage, setCurrentPage] = useState(0);
+
   // Get 8 vehicles for the slider
-  const sliderVehicles = vehicleData.filter(v => v.status === 'available').slice(0, 8)
-  const itemsPerPage = 4
-  const totalPages = Math.ceil(sliderVehicles.length / itemsPerPage)
-  
+  const sliderVehicles = vehicleData
+    .filter((v) => v.status === "available")
+    .slice(0, 8);
+  const itemsPerPage = 4;
+  const totalPages = Math.ceil(sliderVehicles.length / itemsPerPage);
+
   const currentVehicles = sliderVehicles.slice(
     currentPage * itemsPerPage,
-    (currentPage * itemsPerPage) + itemsPerPage
-  )
+    currentPage * itemsPerPage + itemsPerPage,
+  );
 
   const nextPage = () => {
     if (currentPage < totalPages - 1) {
-      setCurrentPage(prev => prev + 1)
+      setCurrentPage((prev) => prev + 1);
     }
-  }
+  };
 
   const prevPage = () => {
     if (currentPage > 0) {
-      setCurrentPage(prev => prev - 1)
+      setCurrentPage((prev) => prev - 1);
     }
-  }
+  };
 
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-            {/* Section Header */}
+        {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-2 lg:mb-12">
           <div className="mb-8 lg:mb-0">
-            
-
             <div className="inline-flex items-center gap-3 mb-4">
-          <div className="w-12 h-1 bg-gradient-to-r from-[#3b2a1f]/70 to-[#1A1C47] rounded-full" />
-          <h2 className="px-4 py-2 bg-blue-50 text-[#3b2a1f] rounded-full text-sm font-semibold">
-           Featured Selection
-          </h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-[#3b2a1f]/70 to-[#1A1C47] rounded-full" />
-        </div>
-            
-           
+              <div className="w-12 h-1 bg-gradient-to-r from-[#3b2a1f]/70 to-[#1A1C47] rounded-full" />
+              <h2 className="px-4 py-2 bg-blue-50 text-[#3b2a1f] rounded-full text-sm font-semibold">
+                Featured Selection
+              </h2>
+              <div className="w-12 h-1 bg-gradient-to-r from-[#3b2a1f]/70 to-[#1A1C47] rounded-full" />
+            </div>
 
             <h2 className="text-4xl md:text-3xl font-bold text-gray-900 mb-4">
-               Ready {" "}
+              Ready{" "}
               <span className="bg-gradient-to-r from-[#3b2a1f]/70 to-[#3b2a1f] bg-clip-text text-transparent">
-                 Premium Vehicles
+                Premium Vehicles
               </span>
             </h2>
           </div>
@@ -68,9 +66,10 @@ const PremiumCarShowSlider = () => {
                 className={`
                   w-11 h-11 rounded-full flex items-center justify-center
                   border transition-all duration-300
-                  ${currentPage === 0
-                    ? 'border-gray-200 text-gray-300 cursor-not-allowed'
-                    : 'border-gray-300 text-gray-700 hover:bg-[#3b2a1f] hover:text-white hover:border-[#3b2a1f]'
+                  ${
+                    currentPage === 0
+                      ? "border-gray-200 text-gray-300 cursor-not-allowed"
+                      : "border-gray-300 text-gray-700 hover:bg-[#3b2a1f] hover:text-white hover:border-[#3b2a1f]"
                   }
                 `}
               >
@@ -82,9 +81,10 @@ const PremiumCarShowSlider = () => {
                 className={`
                   w-11 h-11 rounded-full flex items-center justify-center
                   border transition-all duration-300
-                  ${currentPage === totalPages - 1
-                    ? 'border-gray-200 text-gray-300 cursor-not-allowed'
-                    : 'border-gray-300 text-gray-700 hover:bg-[#3b2a1f] hover:text-white hover:border-[#3b2a1f]'
+                  ${
+                    currentPage === totalPages - 1
+                      ? "border-gray-200 text-gray-300 cursor-not-allowed"
+                      : "border-gray-300 text-gray-700 hover:bg-[#3b2a1f] hover:text-white hover:border-[#3b2a1f]"
                   }
                 `}
               >
@@ -126,14 +126,15 @@ const PremiumCarShowSlider = () => {
           <div className="overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
             <div className="flex space-x-4">
               {sliderVehicles.map((vehicle) => (
-                <div key={vehicle.id} className="w-[280px] flex-shrink-0 snap-start">
+                <div
+                  key={vehicle.id}
+                  className="w-[280px] flex-shrink-0 snap-start"
+                >
                   <VehicleCard vehicle={vehicle} />
                 </div>
               ))}
             </div>
           </div>
-          
-         
         </div>
 
         {/* Bottom Bar */}
@@ -144,7 +145,7 @@ const PremiumCarShowSlider = () => {
               <span>Door-to-door delivery • Customs clearance included</span>
             </div>
           </div>
-          
+
           <Link
             to="/cars"
             className="
@@ -163,7 +164,7 @@ const PremiumCarShowSlider = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default PremiumCarShowSlider
+export default PremiumCarShowSlider;
