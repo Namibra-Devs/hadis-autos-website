@@ -191,7 +191,7 @@ const PremiumStaggeredScrollHero = () => {
       </div>
 
       {/* FIXED RIGHT NAV */}
-      {activeSection >= 0 && activeSection < sections.length && (
+      {/* {activeSection >= 0 && activeSection < sections.length && (
         <div className="fixed right-15 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block">
           <div className="flex flex-col items-center space-y-4">
             {sections.map((_, index) => (
@@ -222,7 +222,7 @@ const PremiumStaggeredScrollHero = () => {
             ))}
           </div>
         </div>
-      )}
+      )} */}
 
      
 

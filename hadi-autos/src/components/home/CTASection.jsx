@@ -6,7 +6,7 @@ const CTASection = () => {
   return (
     <section className="relative py-20 lg:py-32 overflow-hidden">
       {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-600 via-primary-700 to-emerald-800" />
+      <div className="absolute inset-0 bg-light" />
       
       {/* Animated Background Pattern */}
       <div className="absolute inset-0 opacity-10">
@@ -24,19 +24,25 @@ const CTASection = () => {
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <div className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-8">
-              <CheckCircle className="w-5 h-5 text-emerald-300" />
-              <span className="text-white font-semibold">Start Your Import Journey Today</span>
-            </div>
             
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              Ready to Import Your
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-cyan-300">
-                Dream Car?
-              </span>
-            </h2>
+            <div className="inline-flex items-center gap-3 mb-6">
+            <div className="w-12 h-[2px] bg-gradient-to-r from-transparent via-amber-600 to-transparent" />
+            <span className="text-amber-600/80 text-sm uppercase tracking-[0.2em] font-medium">
+             Start Your Import Journey Today
+            </span>
+            <div className="w-12 h-[2px] bg-gradient-to-r from-transparent via-amber-600 to-transparent" />
+          </div>
+
+           <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-black mb-6">
+           Ready to {' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-amber-900">
+             Import Your  Dream Car?
+            </span>
+          </h2>
+
+          
             
-            <p className="text-xl text-white/80 max-w-2xl mx-auto">
+            <p className="text-xl text-black max-w-2xl mx-auto">
               Contact us today for a personalized consultation and get started on your vehicle import journey from Canada to Ghana.
             </p>
           </div>
@@ -63,10 +69,9 @@ const CTASection = () => {
               <div
                 key={index}
                 className="
-                  bg-white/10 backdrop-blur-sm rounded-2xl p-6
+                  bg-[#3b2a1f] backdrop-blur-lg rounded-xl p-6
                   border border-white/20
-                  hover:bg-white/15 hover:border-white/30
-                  transition-all duration-300
+                 
                   group
                 "
               >
@@ -103,11 +108,11 @@ const CTASection = () => {
                 group relative overflow-hidden
                 bg-gradient-to-r from-green-500 to-emerald-600
                 hover:from-green-600 hover:to-emerald-700
-                text-white px-8 py-4 rounded-xl font-semibold
-                shadow-2xl hover:shadow-3xl
+                text-white px-8 py-4 rounded-md font-semibold
+                shadow-sm hover:shadow-xl
                 transition-all duration-300
                 transform hover:scale-105
-                flex-1 lg:flex-none
+                flex-1 lg:flex-none cursor-pointer
               "
               aria-label="Chat on WhatsApp"
             >
@@ -118,7 +123,7 @@ const CTASection = () => {
               <span className="
                 absolute inset-0 bg-gradient-to-r from-white/10 to-transparent
                 translate-x-full group-hover:translate-x-0
-                transition-transform duration-500
+                transition-transform duration-500 c
               " />
             </Button>
 
@@ -128,12 +133,12 @@ const CTASection = () => {
               href="tel:+1234567890"
               className="
                 group relative overflow-hidden
-                bg-white text-gray-900 hover:text-gray-900
-                px-8 py-4 rounded-xl font-semibold
-                shadow-2xl hover:shadow-3xl
+                 text-gray-900 hover:text-gray-900
+                px-8 py-4 rounded-md font-semibold
+                shadow-sm hover:shadow-xl
                 transition-all duration-300
                 transform hover:scale-105
-                flex-1 lg:flex-none
+                flex-1 lg:flex-none cursor-pointer
               "
               aria-label="Call Hadi's Motors"
             >
@@ -153,12 +158,12 @@ const CTASection = () => {
               <Button
                 className="
                   group relative overflow-hidden
-                  bg-transparent border-2 border-white/30 text-white
-                  hover:bg-white/10 hover:border-white/60
-                  px-8 py-4 rounded-xl font-semibold
+                   border-1 border-white/30 text-white
+                  hover:bg-white/10 hover:border-black hover:text-black
+                  px-8 py-4 rounded-md font-semibold
                   transition-all duration-300
                   transform hover:scale-105
-                  flex-1 lg:flex-none
+                  flex-1 lg:flex-none cursor-pointer
                 "
                 aria-label="Contact us via form"
               >
@@ -174,15 +179,6 @@ const CTASection = () => {
             </Link>
           </div>
 
-          {/* Footer Note */}
-          <div className="text-center mt-12 pt-8 border-t border-white/20">
-            <p className="text-white/60 text-sm">
-              <span className="font-semibold text-white/80">Office Hours:</span> Mon-Fri 9AM-6PM EST • Sat 10AM-4PM EST
-            </p>
-            <p className="text-white/60 text-sm mt-2">
-              We serve clients across Canada and Ghana with personalized import solutions.
-            </p>
-          </div>
         </div>
       </div>
     </section>
