@@ -34,7 +34,7 @@ const PremiumCarShowSlider = () => {
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
             {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-2 lg:mb-12">
           <div className="mb-8 lg:mb-0">
             
 
@@ -57,7 +57,7 @@ const PremiumCarShowSlider = () => {
           </div>
 
           {/* Manual Arrow Navigation */}
-          <div className="flex items-center gap-4 mt-2 lg:mt-0">
+          <div className="flex items-center gap-4 mt-2 lg:mt-0 hidden lg:block">
             <span className="text-sm text-gray-500">
               Page {currentPage + 1} of {totalPages}
             </span>
@@ -133,20 +133,7 @@ const PremiumCarShowSlider = () => {
             </div>
           </div>
           
-          {/* Mobile Dots */}
-          <div className="flex justify-center space-x-2 mt-6">
-            {Array.from({ length: totalPages }).map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentPage(idx)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  idx === currentPage 
-                    ? 'w-6 bg-[#3b2a1f]' 
-                    : 'w-1.5 bg-gray-300'
-                }`}
-              />
-            ))}
-          </div>
+         
         </div>
 
         {/* Bottom Bar */}
