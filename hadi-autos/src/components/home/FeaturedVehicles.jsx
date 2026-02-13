@@ -1,109 +1,182 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Star, TrendingUp } from 'lucide-react'
-import Button from '@components/ui/Button'
+import { ChevronLeft, ChevronRight, Truck, Sparkles } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 import VehicleCard from '@components/ui/VehicleCard'
-import { featuredVehicles } from '@utils/data'
+import { vehicleData } from '@utils/data'
 
-const FeaturedVehicles = () => {
+const PremiumCarShowSlider = () => {
+  const [currentPage, setCurrentPage] = useState(0)
+  
+  // Get 8 vehicles for the slider
+  const sliderVehicles = vehicleData.filter(v => v.status === 'available').slice(0, 8)
+  const itemsPerPage = 4
+  const totalPages = Math.ceil(sliderVehicles.length / itemsPerPage)
+  
+  const currentVehicles = sliderVehicles.slice(
+    currentPage * itemsPerPage,
+    (currentPage * itemsPerPage) + itemsPerPage
+  )
+
+  const nextPage = () => {
+    if (currentPage < totalPages - 1) {
+      setCurrentPage(prev => prev + 1)
+    }
+  }
+
+  const prevPage = () => {
+    if (currentPage > 0) {
+      setCurrentPage(prev => prev - 1)
+    }
+  }
+
   return (
-    <section className="relative py-20 lg:py-32 bg-gradient-to-b from-white to-gray-50">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230284c7' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: '60px 60px'
-        }} />
-      </div>
-
-      <div className="container relative mx-auto px-4">
-        {/* Section Header */}
+    <section className="py-16 bg-white">
+      <div className="container mx-auto px-4">
+            {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16">
           <div className="mb-8 lg:mb-0">
-            <div className="inline-flex items-center space-x-3 mb-6">
-              <div className="flex items-center">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
-                ))}
-              </div>
-              <span className="text-sm font-semibold text-primary-600 bg-primary-50 px-3 py-1 rounded-full">
-                Featured Selection
-              </span>
-            </div>
             
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-              Premium Vehicles
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-emerald-600">
-                Ready for Import
+
+            <div className="inline-flex items-center gap-3 mb-4">
+          <div className="w-12 h-1 bg-gradient-to-r from-[#3b2a1f]/70 to-[#1A1C47] rounded-full" />
+          <h2 className="px-4 py-2 bg-blue-50 text-[#3b2a1f] rounded-full text-sm font-semibold">
+           Featured Selection
+          </h2>
+          <div className="w-12 h-1 bg-gradient-to-r from-[#3b2a1f]/70 to-[#1A1C47] rounded-full" />
+        </div>
+            
+           
+
+            <h2 className="text-4xl md:text-3xl font-bold text-gray-900 mb-4">
+               Ready {" "}
+              <span className="bg-gradient-to-r from-[#3b2a1f]/70 to-[#3b2a1f] bg-clip-text text-transparent">
+                 Premium Vehicles
               </span>
             </h2>
-            
-            <p className="text-xl text-gray-600 max-w-2xl">
-              Carefully selected cars available for immediate import from Canada to Ghana
-            </p>
           </div>
 
-          <Link to="/cars">
-            <Button className="
-              group relative overflow-hidden
-              bg-gradient-to-r from-primary-600 to-emerald-600
-              hover:from-primary-700 hover:to-emerald-700
-              text-white px-8 py-4 rounded-xl font-semibold
-              shadow-lg hover:shadow-xl
-              transition-all duration-300
-            ">
-              <span className="relative z-10 flex items-center">
-                View All Vehicles
-                <ArrowRight className="w-5 h-5 ml-3 group-hover:translate-x-2 transition-transform" />
-              </span>
-              <span className="absolute inset-0 bg-white/10 rounded-xl scale-95 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300" />
-            </Button>
-          </Link>
-        </div>
-
-        {/* Trending Badge */}
-        <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-full px-4 py-2 mb-8">
-          <TrendingUp className="w-4 h-4 text-amber-600" />
-          <span className="text-sm font-semibold text-amber-700">
-            Trending this month
-          </span>
-        </div>
-
-        {/* Vehicles Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredVehicles.map((vehicle, index) => (
-            <div
-              key={vehicle.id}
-              className="transform transition-all duration-500 hover:-translate-y-2"
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-            >
-              <VehicleCard vehicle={vehicle} />
+          {/* Manual Arrow Navigation */}
+          <div className="flex items-center gap-4 mt-2 lg:mt-0">
+            <span className="text-sm text-gray-500">
+              Page {currentPage + 1} of {totalPages}
+            </span>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={prevPage}
+                disabled={currentPage === 0}
+                className={`
+                  w-11 h-11 rounded-full flex items-center justify-center
+                  border transition-all duration-300
+                  ${currentPage === 0
+                    ? 'border-gray-200 text-gray-300 cursor-not-allowed'
+                    : 'border-gray-300 text-gray-700 hover:bg-[#3b2a1f] hover:text-white hover:border-[#3b2a1f]'
+                  }
+                `}
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={nextPage}
+                disabled={currentPage === totalPages - 1}
+                className={`
+                  w-11 h-11 rounded-full flex items-center justify-center
+                  border transition-all duration-300
+                  ${currentPage === totalPages - 1
+                    ? 'border-gray-200 text-gray-300 cursor-not-allowed'
+                    : 'border-gray-300 text-gray-700 hover:bg-[#3b2a1f] hover:text-white hover:border-[#3b2a1f]'
+                  }
+                `}
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
             </div>
-          ))}
+          </div>
         </div>
 
-        {/* View All Link */}
-        <div className="text-center mt-16">
+        {/* Desktop Grid - 4 Vehicles */}
+        <div className="hidden lg:block">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentPage}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-4 gap-6"
+            >
+              {currentVehicles.map((vehicle) => (
+                <VehicleCard key={vehicle.id} vehicle={vehicle} />
+              ))}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Tablet Grid - 2 Vehicles */}
+        <div className="hidden md:block lg:hidden">
+          <div className="grid grid-cols-2 gap-6">
+            {sliderVehicles.slice(0, 4).map((vehicle) => (
+              <VehicleCard key={vehicle.id} vehicle={vehicle} />
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile Scroll */}
+        <div className="md:hidden">
+          <div className="overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
+            <div className="flex space-x-4">
+              {sliderVehicles.map((vehicle) => (
+                <div key={vehicle.id} className="w-[280px] flex-shrink-0 snap-start">
+                  <VehicleCard vehicle={vehicle} />
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Mobile Dots */}
+          <div className="flex justify-center space-x-2 mt-6">
+            {Array.from({ length: totalPages }).map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentPage(idx)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  idx === currentPage 
+                    ? 'w-6 bg-[#3b2a1f]' 
+                    : 'w-1.5 bg-gray-300'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-3 lg:mt-12 pt-6 border-t border-gray-100">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1 text-sm text-gray-600">
+              <Truck className="w-4 h-4 text-[#3b2a1f]/70" />
+              <span>Door-to-door delivery • Customs clearance included</span>
+            </div>
+          </div>
+          
           <Link
             to="/cars"
             className="
-              inline-flex items-center space-x-2
-              text-primary-600 hover:text-primary-700
-              font-semibold text-lg
-              group
+               group relative overflow-hidden
+                bg-gradient-to-r from-amber-800 to-orange-600
+                text-white font-semibold px-4 py-4 rounded-md
+                shadow-2xl shadow-orange-500/20
+                hover:shadow-orange-500/40 hover:scale-105
+                transition-all duration-300
+                flex items-center space-x-3 mt-8 cursor-pointer
             "
           >
-            <span>Explore All Available Vehicles</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+            <span>All Inventory</span>
+            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
-          
-          <p className="text-gray-500 mt-2">
-            50+ vehicles available with various makes and models
-          </p>
         </div>
       </div>
     </section>
   )
 }
 
-export default FeaturedVehicles
+export default PremiumCarShowSlider
