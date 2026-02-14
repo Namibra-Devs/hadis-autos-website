@@ -31,9 +31,9 @@ const MobileNav = ({ isOpen, onClose }) => {
             <h2 className="text-xl font-bold text-gray-900">Menu</h2>
             <button
               onClick={onClose}
-              className="p-2 rounded-lg hover:bg-gray-100"
+              className="p-2 rounded-lg hover:bg-red-100"
             >
-              <X className="w-6 h-6" />
+              <X className="w-6 h-6 text-red-700" />
             </button>
           </div>
 
@@ -47,7 +47,7 @@ const MobileNav = ({ isOpen, onClose }) => {
                 className={({ isActive }) =>
                   `flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
                     isActive
-                      ? 'bg-primary-50 text-primary-600'
+                      ? 'bg-red-50 text-red-600'
                       : 'text-gray-600 hover:bg-gray-100'
                   }`
                 }

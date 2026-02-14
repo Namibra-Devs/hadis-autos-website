@@ -1,5 +1,5 @@
 import FlipbookHero from '@components/home/FlipbookHero'
-import WhyChooseUs from '@components/home/WhyChooseUs'
+
 import FeaturedVehicles from '@components/home/FeaturedVehicles'
 import HowItWorks from '@components/shared/HowItWorks'
 import Testimonials from '@components/shared/Testimonials'
@@ -12,7 +12,7 @@ const Home = () => {
       {/* Flipbook Hero Sections */}
       <FlipbookHero />
       <BrowseSection />
-      <WhyChooseUs />
+     
       <FeaturedVehicles />
       <HowItWorks />
       <Testimonials />

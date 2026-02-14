@@ -7,25 +7,25 @@ const HowItWorks = () => {
       icon: Search,
       title: 'Browse & Select',
       description: 'Choose from our available vehicles or let us find one that matches your exact specifications.',
-      accent: 'from-amber-400 to-orange-500'
+      accent: 'from-red-500 to-red-800'
     },
     {
       icon: Car,
       title: 'Vehicle Inspection',
       description: 'We conduct thorough 150-point inspections and provide detailed reports with photos.',
-      accent: 'from-amber-500 to-orange-600'
+      accent: 'from-red-500 to-red-800'
     },
     {
       icon: Ship,
       title: 'Shipping & Customs',
       description: 'We handle all logistics including shipping, insurance, and customs clearance.',
-      accent: 'from-orange-500 to-amber-600'
+      accent: 'from-red-500 to-red-800'
     },
     {
       icon: CheckCircle,
       title: 'Delivery & Handover',
       description: 'Vehicle delivered to your preferred location in Ghana with full documentation.',
-      accent: 'from-amber-600 to-orange-500'
+      accent: 'from-red-500 to-red-800'
     },
   ]
 
@@ -52,7 +52,7 @@ const HowItWorks = () => {
   }
 
   return (
-    <section className="relative py-20 lg:py-28 overflow-hidden">
+    <section className="relative py-10 overflow-hidden">
       {/* Premium Background Image */}
       <div className="absolute inset-0 z-0">
         {/* Dark overlay for text readability */}
@@ -92,21 +92,21 @@ const HowItWorks = () => {
         >
           {/* Decorative Badge */}
           <div className="inline-flex items-center gap-3 mb-6">
-            <div className="w-12 h-[2px] bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
-            <span className="text-amber-200/80 text-sm uppercase tracking-[0.2em] font-medium">
+            <div className="w-12 h-[2px] bg-gradient-to-r from-transparent via-red-400 to-transparent" />
+            <span className="text-red-600 text-sm uppercase tracking-[0.2em] font-medium">
               Simple Process
             </span>
-            <div className="w-12 h-[2px] bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
+            <div className="w-12 h-[2px] bg-gradient-to-r from-transparent via-red-400 to-transparent" />
           </div>
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
             How {' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-orange-300 to-amber-700">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-red-900 to-white">
              It Works
             </span>
           </h2>
           
-          <p className="text-md lg:text-xl text-amber-100/80 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-md lg:text-xl text-white max-w-3xl mx-auto leading-relaxed">
             Our streamlined 4-step process makes importing vehicles from Canada to Ghana 
             simple, transparent, and completely hassle-free.
           </p>
@@ -153,7 +153,7 @@ const HowItWorks = () => {
                   <div className="
                     absolute -top-3 -right-3
                     w-12 h-12 rounded-full
-                    bg-gradient-to-br from-amber-400 to-orange-500
+                    bg-gradient-to-br from-red-600 to-red-700
                     flex items-center justify-center
                     text-white font-bold text-lg
                     shadow-xl
@@ -166,7 +166,7 @@ const HowItWorks = () => {
                   {/* Icon Container */}
                   <div className="
                     relative w-14 h-14 lg:w-16 lg:h-16
-                    rounded-xl bg-gradient-to-br from-amber-400/20 to-orange-500/20
+                    rounded-xl bg-gradient-to-br from-red-400/20 to-orange-500/20
                     flex items-center justify-center
                     mb-5 lg:mb-6
                     transition-all duration-500
@@ -197,7 +197,7 @@ const HowItWorks = () => {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-sm lg:text-base text-amber-100/70 leading-relaxed">
+                  <p className="text-sm lg:text-base text-white leading-relaxed">
                     {step.description}
                   </p>
 
@@ -207,7 +207,7 @@ const HowItWorks = () => {
                     border-b-2 border-r-2 border-white/10
                     rounded-br-2xl
                     transition-all duration-500
-                    group-hover:border-amber-400/30
+                    group-hover:border-red-400/30
                   " />
                 </div>
 
@@ -217,7 +217,7 @@ const HowItWorks = () => {
                     hidden lg:block
                     absolute top-1/2 -right-4
                     w-8 h-0.5
-                    bg-gradient-to-r from-amber-400/50 to-transparent
+                    bg-gradient-to-r from-red-400/50 to-transparent
                     transform -translate-y-1/2
                   " />
                 )}
@@ -238,7 +238,7 @@ const HowItWorks = () => {
             
             <div className="text-left">
               <div className="text-white font-semibold">Trusted by 500+ Importers</div>
-              <div className="text-amber-200/70 text-sm">98% customer satisfaction</div>
+              <div className="text-red-200/70 text-sm">98% customer satisfaction</div>
             </div>
           </div>
 
@@ -249,7 +249,7 @@ const HowItWorks = () => {
               {['Canada', 'Ghana'].map((country) => (
                 <span
                   key={country}
-                  className="px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-amber-100/80 text-sm"
+                  className="px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-red-100/80 text-sm"
                 >
                   {country}
                 </span>
@@ -277,8 +277,8 @@ const HowItWorks = () => {
             return (
               <div key={index} className="text-center">
                 <div className="flex items-center justify-center gap-2 mb-2">
-                  <StatIcon className="w-4 h-4 text-amber-400" />
-                  <div className="text-2xl lg:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-400">
+                  <StatIcon className="w-4 h-4 text-red-400" />
+                  <div className="text-2xl lg:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-700">
                     {stat.value}
                   </div>
                 </div>

@@ -297,9 +297,9 @@ const VehicleCard = ({ vehicle, featured = false }) => {
             href="tel:+1234567890"
             className="
               flex items-center justify-center
-              bg-blue-600 hover:bg-blue-700
+              bg-red-600 hover:bg-red-800
               text-white text-xs font-medium
-              px-2 py-2 rounded-lg
+              px-2 py-2 rounded-md
               transition-all duration-300
               hover:shadow-md hover:scale-105
             "
@@ -314,9 +314,9 @@ const VehicleCard = ({ vehicle, featured = false }) => {
             rel="noopener noreferrer"
             className="
               flex items-center justify-center
-              bg-green-600 hover:bg-green-700
+              bg-green-600 hover:bg-green-800
               text-white text-xs font-medium
-              px-2 py-2 rounded-lg
+              px-2 py-2 rounded-md
               transition-all duration-300
               hover:shadow-md hover:scale-105
             "
@@ -329,9 +329,9 @@ const VehicleCard = ({ vehicle, featured = false }) => {
             to={`/inquiry/${vehicle.id}`}
             className="
               flex items-center justify-center
-              bg-gray-600 hover:bg-gray-700
+              bg-gray-600 hover:bg-gray-800
               text-white text-xs font-medium
-              px-2 py-2 rounded-lg
+              px-2 py-2 rounded-sm
               transition-all duration-300
               hover:shadow-md hover:scale-105
             "

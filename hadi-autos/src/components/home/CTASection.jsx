@@ -4,21 +4,21 @@ import Button from '@components/ui/Button'
 
 const CTASection = () => {
   return (
-    <section className="relative py-20 lg:py-32 overflow-hidden">
+    <section className="relative py-10 overflow-hidden">
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-light" />
       
       {/* Animated Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 animate-gradient-shift" style={{
-          backgroundImage: `linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.1) 50%, transparent 55%)`,
+          backgroundImage: `linear-gradient(45deg, transparent 45%, rgba(205, 38, 38, 0.44) 50%, transparent 55%)`,
           backgroundSize: '200% 200%'
         }} />
       </div>
       
       {/* Floating Elements */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-gradient-to-r from-primary-500/20 to-transparent blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-gradient-to-l from-emerald-500/10 to-transparent blur-3xl" />
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-gradient-to-r from-red-500/20 to-transparent blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-gradient-to-l from-red-500/10 to-transparent blur-3xl" />
 
       <div className="container relative mx-auto px-4">
         <div className="max-w-4xl mx-auto">
@@ -26,16 +26,16 @@ const CTASection = () => {
           <div className="text-center mb-12">
             
             <div className="inline-flex items-center gap-3 mb-6">
-            <div className="w-12 h-[2px] bg-gradient-to-r from-transparent via-amber-600 to-transparent" />
-            <span className="text-amber-600/80 text-sm uppercase tracking-[0.2em] font-medium">
+            <div className="w-12 h-[2px] bg-gradient-to-r from-transparent via-red-600 to-transparent" />
+            <span className="text-red-700 text-sm uppercase tracking-[0.2em] font-medium">
              Start Your Import Journey Today
             </span>
-            <div className="w-12 h-[2px] bg-gradient-to-r from-transparent via-amber-600 to-transparent" />
+            <div className="w-12 h-[2px] bg-gradient-to-r from-transparent via-red-600 to-transparent" />
           </div>
 
            <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-black mb-6">
            Ready to {' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-amber-900">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-900 to-black">
              Import Your  Dream Car?
             </span>
           </h2>
@@ -69,7 +69,7 @@ const CTASection = () => {
               <div
                 key={index}
                 className="
-                  bg-[#3b2a1f] backdrop-blur-lg rounded-xl p-6
+                  bg-red-900 backdrop-blur-xlg rounded-xl p-6
                   border border-white/20
                  
                   group

@@ -203,16 +203,16 @@ export default function TestimonialSlider() {
           
 
           <div className="inline-flex items-center gap-3 mb-4">
-              <div className="w-12 h-1 bg-gradient-to-r from-[#3b2a1f]/70 to-[#1A1C47] rounded-full" />
-              <h2 className="px-4 py-2 bg-blue-50 text-[#3b2a1f] rounded-full text-sm font-semibold">
+              <div className="w-12 h-1 bg-gradient-to-r from-red-500 to-red-900 rounded-full" />
+              <h2 className="px-4 py-2 bg-red-50 text-red-500 rounded-full text-sm font-semibold">
                 MEMBER TESTIMONIALS
               </h2>
-              <div className="w-12 h-1 bg-gradient-to-r from-[#3b2a1f]/70 to-[#1A1C47] rounded-full" />
+              <div className="w-12 h-1 bg-gradient-to-r from-red-500 to-red-900 rounded-full" />
             </div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3">
             Voices{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-orange-300 to-amber-700">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-900 to-black">
               of Trust
             </span>
           </h2>
@@ -279,7 +279,7 @@ export default function TestimonialSlider() {
                      <div
                       className={`rounded-xl shadow-md overflow-hidden transition-all duration-500 ${
                         isCenter
-                          ? "shadow-2xl bg-[#3b2a1f] text-white ring-2 ring-white/20"
+                          ? "shadow-2xl bg-black text-white ring-2 ring-white/20"
                           : "shadow-md bg-white opacity-90 hover:opacity-100 cursor-pointer"
                       }`}
                       onClick={() =>
@@ -306,8 +306,8 @@ export default function TestimonialSlider() {
                               key={i}
                               className={`w-5 h-5 ${
                                 i < review.rating
-                                  ? "text-amber-300 fill-current"
-                                  : "text-amber-300"
+                                  ? "text-red-600 fill-current"
+                                  : "text-red-500"
                               } ${isCenter ? "scale-110" : "scale-90"}`}
                             />
                           ))}
@@ -360,8 +360,8 @@ export default function TestimonialSlider() {
                           transition={{ delay: 0.3, type: "spring" }}
                           className="absolute -top-3 -right-3"
                         >
-                          <div className="bg-gradient-to-r from-blue-600 to-blue-900 text-amber-300 px-3 py-1.5 lg:px-4 lg:py-2 rounded-full shadow-lg flex items-center gap-2">
-                            <Star size={12} className="text-amber-300" />
+                          <div className="bg-gradient-to-r from-red-600 to-red-900 text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-full shadow-lg flex items-center gap-2">
+                            <Star size={12} className="text-white" />
                             <span className="text-xs lg:text-sm font-bold">
                               FEATURED
                             </span>

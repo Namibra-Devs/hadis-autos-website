@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, Truck, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import VehicleCard from "@components/ui/VehicleCard";
 import { vehicleData } from "@utils/data";
+import Button from "@components/ui/Button";
 
 const PremiumCarShowSlider = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -39,16 +40,16 @@ const PremiumCarShowSlider = () => {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-2 lg:mb-12">
           <div className="mb-8 lg:mb-0">
             <div className="inline-flex items-center gap-3 mb-4">
-              <div className="w-12 h-1 bg-gradient-to-r from-[#3b2a1f]/70 to-[#1A1C47] rounded-full" />
-              <h2 className="px-4 py-2 bg-blue-50 text-[#3b2a1f] rounded-full text-sm font-semibold">
+              <div className="w-12 h-1 bg-gradient-to-r from-red-400 to-red-800 rounded-full" />
+              <h2 className="px-4 py-2 bg-red-50 text-red-600 rounded-full text-sm font-semibold">
                 Featured Selection
               </h2>
-              <div className="w-12 h-1 bg-gradient-to-r from-[#3b2a1f]/70 to-[#1A1C47] rounded-full" />
+              <div className="w-12 h-1 bg-gradient-to-r from-red-400 to-red-800 rounded-full" />
             </div>
 
             <h2 className="text-4xl md:text-3xl font-bold text-gray-900 mb-4">
               Ready{" "}
-              <span className="bg-gradient-to-r from-[#3b2a1f]/70 to-[#3b2a1f] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-red-500 via-red-900 to-black bg-clip-text text-transparent">
                 Premium Vehicles
               </span>
             </h2>
@@ -56,10 +57,10 @@ const PremiumCarShowSlider = () => {
 
           {/* Manual Arrow Navigation */}
           <div className="flex items-center gap-4 mt-2 lg:mt-0 hidden lg:block">
-            <span className="text-sm text-gray-500">
+            <span className="text-sm text-red-500">
               Page {currentPage + 1} of {totalPages}
             </span>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 mt-3">
               <button
                 onClick={prevPage}
                 disabled={currentPage === 0}
@@ -146,21 +147,18 @@ const PremiumCarShowSlider = () => {
             </div>
           </div>
 
-          <Link
+          <Button
             to="/cars"
             className="
                group relative overflow-hidden
-                bg-gradient-to-r from-amber-800 to-orange-600
-                text-white font-semibold px-4 py-4 rounded-md
-                shadow-2xl shadow-orange-500/20
-                hover:shadow-orange-500/40 hover:scale-105
-                transition-all duration-300
-                flex items-center space-x-3 mt-8 cursor-pointer
+              text-gray-900
+              px-6 py-3 lg:px-8 lg:py-4 rounded-lg font-semibold
+              hover:shadow-2xl hover:scale-105 transition-all cursor-pointer
             "
           >
             <span>All Inventory</span>
             <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
+          </Button>
         </div>
       </div>
     </section>
