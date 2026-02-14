@@ -102,8 +102,8 @@ const CTASection = () => {
               rel="noopener noreferrer"
               className="
                 group relative overflow-hidden
-                bg-gradient-to-r from-green-500 to-emerald-600
-                hover:from-green-600 hover:to-emerald-700
+                bg-red-800
+                hover:from-red-600 hover:to-red-700
                 text-white px-8 py-4 rounded-md font-semibold
                 shadow-sm hover:shadow-xl
                 transition-all duration-300

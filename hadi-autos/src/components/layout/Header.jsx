@@ -170,7 +170,7 @@ const Header = () => {
                 rel="noopener noreferrer"
                 className="
                   relative overflow-hidden group/btn
-                  bg-gradient-to-r from-green-500 to-green-700 hover:from-green-800 hover:to-green-400
+                  bg-black hover:from-green-800 hover:to-green-400
                   text-white px-6 py-2.5 rounded-lg font-semibold
                   transition-all duration-300 shadow-sm hover:shadow-xl cursor-pointer hover:scale-105
                 "

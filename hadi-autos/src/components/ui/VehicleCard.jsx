@@ -314,7 +314,7 @@ const VehicleCard = ({ vehicle, featured = false }) => {
             rel="noopener noreferrer"
             className="
               flex items-center justify-center
-              bg-green-600 hover:bg-green-800
+              bg-red-600 hover:bg-green-800
               text-white text-xs font-medium
               px-2 py-2 rounded-md
               transition-all duration-300
