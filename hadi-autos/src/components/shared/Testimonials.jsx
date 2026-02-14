@@ -21,12 +21,12 @@ export default function TestimonialSlider() {
   const touchEndRef = useRef(null);
 
   const reviews = [
-  {
-    id: 1,
-    name: "Michael Owusu",
-    role: "Business Owner",
-    content:
-      "From the first inquiry to final delivery, the entire process was seamless. My vehicle arrived exactly as described, and the team handled everything professionally.",
+    {
+      id: 1,
+      name: "Michael Owusu",
+      role: "Business Owner",
+      content:
+        "From the first inquiry to final delivery, the entire process was seamless. My vehicle arrived exactly as described, and the team handled everything professionally.",
       rating: 5,
       avatarColor: "from-blue-500 to-blue-800",
     },
@@ -74,9 +74,8 @@ export default function TestimonialSlider() {
         "I appreciate how detailed the inspection reports were before purchase. It made the decision easy and stress-free.",
       rating: 4,
       avatarColor: "from-indigo-500 to-violet-800",
-    }
-];
-
+    },
+  ];
 
   // Calculate visible reviews (always 3 in view)
   const getVisibleReviews = () => {
@@ -200,21 +199,16 @@ export default function TestimonialSlider() {
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-12 md:mb-16"
         >
-          
-
           <div className="inline-flex items-center gap-3 mb-4">
-              <div className="w-12 h-1 bg-gradient-to-r from-red-500 to-red-900 rounded-full" />
-              <h2 className="px-4 py-2 bg-red-50 text-red-500 rounded-full text-sm font-semibold">
-                MEMBER TESTIMONIALS
-              </h2>
-              <div className="w-12 h-1 bg-gradient-to-r from-red-500 to-red-900 rounded-full" />
-            </div>
+            <div className="w-12 h-1 bg-gradient-to-r from-red-500 to-red-900 rounded-full" />
+            <h2 className="px-4 py-2 bg-red-50 text-red-500 rounded-full text-sm font-semibold">
+              MEMBER TESTIMONIALS
+            </h2>
+            <div className="w-12 h-1 bg-gradient-to-r from-red-500 to-red-900 rounded-full" />
+          </div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3">
-            Voices{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-900 to-black">
-              of Trust
-            </span>
+            Voices of Trust
           </h2>
         </motion.div>
 
@@ -276,7 +270,7 @@ export default function TestimonialSlider() {
                           : "z-10 right-0 lg:right-8"
                     }`}
                   >
-                     <div
+                    <div
                       className={`rounded-xl shadow-md overflow-hidden transition-all duration-500 ${
                         isCenter
                           ? "shadow-2xl bg-black text-white ring-2 ring-white/20"
@@ -415,9 +409,7 @@ export default function TestimonialSlider() {
                     <h4 className="font-bold text-white">
                       {reviews[currentIndex].name}
                     </h4>
-                    <p className="text-white">
-                      {reviews[currentIndex].role}
-                    </p>
+                    <p className="text-white">{reviews[currentIndex].role}</p>
                   </div>
                 </div>
               </motion.div>

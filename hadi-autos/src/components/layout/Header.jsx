@@ -97,10 +97,7 @@ const Header = () => {
               {/* Brand Text */}
               <div className="flex flex-col">
                 <h2 className="text-2xl font-bold text-gray-900 tracking-tight">
-                  Hadi's {" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#af1740] to-[#740938]">
-                    Motors
-                  </span>
+                  Hadi's Motors
                 </h2>
                 <p className="text-xs text-gray-600 font-medium tracking-wider uppercase">
                   Canada ↔ Ghana

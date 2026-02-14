@@ -48,10 +48,7 @@ const PremiumCarShowSlider = () => {
             </div>
 
             <h2 className="text-4xl md:text-3xl font-bold text-gray-900 mb-4">
-              Ready{" "}
-              <span className="bg-gradient-to-r from-red-500 via-red-900 to-black bg-clip-text text-transparent">
-                Premium Vehicles
-              </span>
+              Ready Premium Vehicles
             </h2>
           </div>
 

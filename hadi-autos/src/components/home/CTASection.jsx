@@ -1,21 +1,24 @@
-import { Link } from 'react-router-dom'
-import { MessageCircle, Phone, Mail, Clock, CheckCircle } from 'lucide-react'
-import Button from '@components/ui/Button'
+import { Link } from "react-router-dom";
+import { MessageCircle, Phone, Mail, Clock, CheckCircle } from "lucide-react";
+import Button from "@components/ui/Button";
 
 const CTASection = () => {
   return (
     <section className="relative py-10 overflow-hidden">
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-light" />
-      
+
       {/* Animated Background Pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 animate-gradient-shift" style={{
-          backgroundImage: `linear-gradient(45deg, transparent 45%, rgba(205, 38, 38, 0.44) 50%, transparent 55%)`,
-          backgroundSize: '200% 200%'
-        }} />
+        <div
+          className="absolute inset-0 animate-gradient-shift"
+          style={{
+            backgroundImage: `linear-gradient(45deg, transparent 45%, rgba(205, 38, 38, 0.44) 50%, transparent 55%)`,
+            backgroundSize: "200% 200%",
+          }}
+        />
       </div>
-      
+
       {/* Floating Elements */}
       <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-gradient-to-r from-red-500/20 to-transparent blur-3xl" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-gradient-to-l from-red-500/10 to-transparent blur-3xl" />
@@ -24,26 +27,21 @@ const CTASection = () => {
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            
             <div className="inline-flex items-center gap-3 mb-6">
-            <div className="w-12 h-[2px] bg-gradient-to-r from-transparent via-red-600 to-transparent" />
-            <span className="text-red-700 text-sm uppercase tracking-[0.2em] font-medium">
-             Start Your Import Journey Today
-            </span>
-            <div className="w-12 h-[2px] bg-gradient-to-r from-transparent via-red-600 to-transparent" />
-          </div>
+              <div className="w-12 h-[2px] bg-gradient-to-r from-transparent via-red-600 to-transparent" />
+              <span className="text-red-700 text-sm uppercase tracking-[0.2em] font-medium">
+                Start Your Import Journey Today
+              </span>
+              <div className="w-12 h-[2px] bg-gradient-to-r from-transparent via-red-600 to-transparent" />
+            </div>
 
-           <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-black mb-6">
-           Ready to {' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-900 to-black">
-             Import Your  Dream Car?
-            </span>
-          </h2>
+            <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-black mb-6">
+              Ready to Import Your Dream Car?
+            </h2>
 
-          
-            
             <p className="text-xl text-black max-w-2xl mx-auto">
-              Contact us today for a personalized consultation and get started on your vehicle import journey from Canada to Ghana.
+              Contact us today for a personalized consultation and get started
+              on your vehicle import journey from Canada to Ghana.
             </p>
           </div>
 
@@ -52,19 +50,19 @@ const CTASection = () => {
             {[
               {
                 icon: <Clock className="w-6 h-6" />,
-                title: 'Quick Response',
-                description: 'Get answers within 24 hours'
+                title: "Quick Response",
+                description: "Get answers within 24 hours",
               },
               {
                 icon: <CheckCircle className="w-6 h-6" />,
-                title: 'Free Consultation',
-                description: 'No obligation assessment'
+                title: "Free Consultation",
+                description: "No obligation assessment",
               },
               {
                 icon: <Mail className="w-6 h-6" />,
-                title: 'Full Support',
-                description: 'Guidance every step of the way'
-              }
+                title: "Full Support",
+                description: "Guidance every step of the way",
+              },
             ].map((feature, index) => (
               <div
                 key={index}
@@ -75,23 +73,21 @@ const CTASection = () => {
                   group
                 "
               >
-                <div className="
+                <div
+                  className="
                   w-12 h-12 rounded-xl bg-gradient-to-br from-white/20 to-transparent
                   flex items-center justify-center mb-4
                   group-hover:scale-110 transition-transform duration-300
-                ">
-                  <div className="text-white">
-                    {feature.icon}
-                  </div>
+                "
+                >
+                  <div className="text-white">{feature.icon}</div>
                 </div>
-                
+
                 <h3 className="text-lg font-semibold text-white mb-2">
                   {feature.title}
                 </h3>
-                
-                <p className="text-white/70">
-                  {feature.description}
-                </p>
+
+                <p className="text-white/70">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -120,11 +116,13 @@ const CTASection = () => {
                 <MessageCircle className="w-6 h-6 mr-3" />
                 Chat on WhatsApp
               </span>
-              <span className="
+              <span
+                className="
                 absolute inset-0 bg-gradient-to-r from-white/10 to-transparent
                 translate-x-full group-hover:translate-x-0
                 transition-transform duration-500 c
-              " />
+              "
+              />
             </Button>
 
             {/* Phone Button */}
@@ -146,11 +144,13 @@ const CTASection = () => {
                 <Phone className="w-6 h-6 mr-3" />
                 Call Now: +1 (234) 567-890
               </span>
-              <span className="
+              <span
+                className="
                 absolute inset-0 bg-gradient-to-r from-primary-100 to-emerald-100
                 opacity-0 group-hover:opacity-100
                 transition-opacity duration-300
-              " />
+              "
+              />
             </Button>
 
             {/* Contact Form Link */}
@@ -167,22 +167,21 @@ const CTASection = () => {
                 "
                 aria-label="Contact us via form"
               >
-                <span className="relative z-10">
-                  Contact Form
-                </span>
-                <span className="
+                <span className="relative z-10">Contact Form</span>
+                <span
+                  className="
                   absolute inset-0 bg-white/5 rounded-xl
                   scale-95 opacity-0 group-hover:scale-100 group-hover:opacity-100
                   transition-all duration-300
-                " />
+                "
+                />
               </Button>
             </Link>
           </div>
-
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default CTASection
+export default CTASection;
