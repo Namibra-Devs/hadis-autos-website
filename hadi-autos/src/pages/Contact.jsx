@@ -41,11 +41,11 @@ const Contact = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="mb-12 text-center">
+      <div className="mb-12 text-left mt-20">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
           Contact Hadi's Motors
         </h1>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <p className="text-gray-600  text-left">
           Get in touch with us for inquiries about vehicle imports, pricing, or shipping information.
         </p>
       </div>
@@ -58,28 +58,28 @@ const Contact = () => {
             
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
-                <div className="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center">
-                  <Phone className="w-5 h-5 text-primary-600" />
+                <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
+                  <Phone className="w-5 h-5 text-red-600" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900">Phone Numbers</h3>
                   <p className="text-gray-600 mt-1">
-                    Canada: <a href="tel:+1234567890" className="text-primary-600 hover:text-primary-700">+1 (234) 567-890</a>
+                    Canada: <a href="tel:+1234567890" className="text-red-600 hover:text-red-700">+1 (234) 567-890</a>
                   </p>
                   <p className="text-gray-600">
-                    Ghana: <a href="tel:+233123456789" className="text-primary-600 hover:text-primary-700">+233 12 345 6789</a>
+                    Ghana: <a href="tel:+233123456789" className="text-red-600 hover:text-red-700">+233 12 345 6789</a>
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center">
-                  <Mail className="w-5 h-5 text-primary-600" />
+                <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
+                  <Mail className="w-5 h-5 text-red-600" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900">Email</h3>
                   <p className="text-gray-600 mt-1">
-                    <a href="mailto:info@hadismotors.com" className="text-primary-600 hover:text-primary-700">
+                    <a href="mailto:info@hadismotors.com" className="text-red-600 hover:text-red-700">
                       info@hadismotors.com
                     </a>
                   </p>
@@ -87,8 +87,8 @@ const Contact = () => {
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-primary-600" />
+                <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-red-600" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900">Locations</h3>
@@ -99,9 +99,9 @@ const Contact = () => {
             </div>
 
             {/* WhatsApp CTA */}
-            <div className="mt-8 p-4 bg-green-50 rounded-lg">
+            <div className="mt-8 p-4 bg-red-50 rounded-lg">
               <div className="flex items-center space-x-3 mb-3">
-                <MessageCircle className="w-6 h-6 text-green-600" />
+                <MessageCircle className="w-6 h-6 text-red-600" />
                 <h3 className="font-semibold text-gray-900">Quick WhatsApp Chat</h3>
               </div>
               <p className="text-gray-600 text-sm mb-3">
@@ -111,7 +111,7 @@ const Contact = () => {
                 href="https://wa.me/1234567890"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center space-x-2 btn-primary bg-green-600 hover:bg-green-700 w-full"
+                className="flex items-center justify-center space-x-2 text-white p-3 rounded-md bg-black hover:bg-green-700 w-full"
               >
                 <MessageCircle className="w-5 h-5" />
                 <span>Chat on WhatsApp</span>

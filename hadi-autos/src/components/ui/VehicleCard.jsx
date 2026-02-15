@@ -1,43 +1,62 @@
-import { Link } from 'react-router-dom'
-import { MapPin, Truck, ChevronRight, Heart, Fuel, Gauge, Calendar, ChevronLeft, ChevronRight as ChevronRightIcon, Phone, MessageCircle, FileText } from 'lucide-react'
-import { useState } from 'react'
-import Badge from './Badge'
-import { getVehicleImages, getVehicleMainImage, getVehicleImageFilenames } from '@utils/imageMappings'
+import { Link } from "react-router-dom";
+import {
+  MapPin,
+  Truck,
+  ChevronRight,
+  Heart,
+  Fuel,
+  Gauge,
+  Calendar,
+  ChevronLeft,
+  ChevronRight as ChevronRightIcon,
+  Phone,
+  MessageCircle,
+  FileText,
+} from "lucide-react";
+import { useState } from "react";
+import Badge from "./Badge";
+import {
+  getVehicleImages,
+  getVehicleMainImage,
+  getVehicleImageFilenames,
+} from "@utils/imageMappings";
 
 const VehicleCard = ({ vehicle, featured = false }) => {
-  const [isLiked, setIsLiked] = useState(false)
-  const [imageError, setImageError] = useState(false)
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [isHovered, setIsHovered] = useState(false)
-  
-  // Get all images for this vehicle from centralized mapping
-  const imageFilenames = getVehicleImageFilenames(vehicle.id)
-  const imageArray = imageFilenames.map(filename => `/images/${filename}`)
+  const [isLiked, setIsLiked] = useState(false);
+  const [imageError, setImageError] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
-  const currentImage = imageError 
-    ? '/images/placeholder-car.jpg' 
-    : imageArray[currentImageIndex]
+  // Get all images for this vehicle from centralized mapping
+  const imageFilenames = getVehicleImageFilenames(vehicle.id);
+  const imageArray = imageFilenames.map((filename) => `/images/${filename}`);
+
+  const currentImage = imageError
+    ? "/images/placeholder-car.jpg"
+    : imageArray[currentImageIndex];
 
   const nextImage = (e) => {
-    e.preventDefault()
-    e.stopPropagation()
-    setCurrentImageIndex((prev) => (prev + 1) % imageArray.length)
-  }
+    e.preventDefault();
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev + 1) % imageArray.length);
+  };
 
   const prevImage = (e) => {
-    e.preventDefault()
-    e.stopPropagation()
-    setCurrentImageIndex((prev) => (prev - 1 + imageArray.length) % imageArray.length)
-  }
+    e.preventDefault();
+    e.stopPropagation();
+    setCurrentImageIndex(
+      (prev) => (prev - 1 + imageArray.length) % imageArray.length,
+    );
+  };
 
   return (
-    <Link 
+    <Link
       to={`/cars/${vehicle.id}`}
       className="block cursor-pointer group bg-white rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 h-full flex flex-col border border-gray-100 no-underline"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => {
-        setIsHovered(false)
-        setCurrentImageIndex(0)
+        setIsHovered(false);
+        setCurrentImageIndex(0);
       }}
     >
       {/* Vehicle Image Gallery */}
@@ -49,102 +68,115 @@ const VehicleCard = ({ vehicle, featured = false }) => {
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           onError={() => setImageError(true)}
         />
-        
+
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        
+
         {/* Like Button */}
         <button
           onClick={(e) => {
-            e.preventDefault()
-            e.stopPropagation()
-            setIsLiked(!isLiked)
+            e.preventDefault();
+            e.stopPropagation();
+            setIsLiked(!isLiked);
           }}
           className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 z-20"
         >
-          <Heart className={`w-3.5 h-3.5 transition-colors ${
-            isLiked ? 'fill-red-500 text-red-500' : 'text-gray-700'
-          }`} />
+          <Heart
+            className={`w-3.5 h-3.5 transition-colors ${
+              isLiked ? "fill-red-500 text-red-500" : "text-gray-700"
+            }`}
+          />
         </button>
 
         {/* FR-CD-04: Display vehicle location (Canada or Ghana) */}
         <div className="absolute top-3 left-3 z-10">
           <Badge
-            variant={vehicle.location === 'canada' ? 'primary' : 'success'}
+            variant={vehicle.location === "canada" ? "primary" : "success"}
             className="flex items-center shadow-lg backdrop-blur-sm bg-white/95 text-xs py-1"
           >
             <MapPin className="w-3 h-3 mr-1" />
-            {vehicle.location === 'canada' ? 'Canada' : 'Ghana'}
+            {vehicle.location === "canada" ? "Canada" : "Ghana"}
           </Badge>
         </div>
 
         {/* Featured Badge */}
         {vehicle.isFeatured && featured && (
           <div className="absolute bottom-3 left-3 z-10">
-            <Badge variant="warning" className="bg-amber-500/90 text-white border-0">Featured</Badge>
+            <Badge
+              variant="warning"
+              className="bg-amber-500/90 text-white border-0"
+            >
+              Featured
+            </Badge>
           </div>
         )}
 
         {/* Sub-image Navigation Arrows */}
-        {isHovered && (
-          <>
-            <button
-              onClick={prevImage}
-              className="
-                absolute left-2 top-1/2 -translate-y-1/2
-                w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm
-                flex items-center justify-center
-                text-white hover:bg-[#3b2a1f] hover:scale-110
-                transition-all duration-300 z-30
-                opacity-0 group-hover:opacity-100
-              "
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              onClick={nextImage}
-              className="
-                absolute right-2 top-1/2 -translate-y-1/2
-                w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm
-                flex items-center justify-center
-                text-white hover:bg-[#3b2a1f] hover:scale-110
-                transition-all duration-300 z-30
-                opacity-0 group-hover:opacity-100
-              "
-            >
-              <ChevronRightIcon className="w-4 h-4" />
-            </button>
-          </>
-        )}
+
+        <button
+          onClick={prevImage}
+          className="
+  absolute left-2 top-1/2 -translate-y-1/2
+  w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm
+  flex items-center justify-center
+  text-white hover:bg-[#3b2a1f] hover:scale-110
+  transition-all duration-300 z-30
+
+  opacity-100 md:opacity-0 md:group-hover:opacity-100
+"
+        >
+          <ChevronLeft className="w-4 h-4" />
+        </button>
+        <button
+          onClick={nextImage}
+   className="
+  absolute right-2 top-1/2 -translate-y-1/2
+  w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm
+  flex items-center justify-center
+  text-white hover:bg-[#3b2a1f] hover:scale-110
+  transition-all duration-300 z-30
+
+  opacity-100 md:opacity-0 md:group-hover:opacity-100
+"
+
+
+        >
+          <ChevronRightIcon className="w-4 h-4" />
+        </button>
 
         {/* Image Counter */}
-        <div className="
+        <div
+          className="
           absolute bottom-3 right-3
           bg-black/60 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-md
           opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20
-        ">
+        "
+        >
           {currentImageIndex + 1} / {imageArray.length}
         </div>
 
         {/* Image Indicators */}
-        <div className="
+        <div
+          className="
           absolute bottom-3 left-1/2 -translate-x-1/2
           flex items-center space-x-1.5
           opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20
-        ">
+        "
+        >
           {imageArray.map((_, idx) => (
             <button
               key={idx}
               onClick={(e) => {
-                e.preventDefault()
-                e.stopPropagation()
-                setCurrentImageIndex(idx)
+                e.preventDefault();
+                e.stopPropagation();
+                setCurrentImageIndex(idx);
               }}
               className={`
                 w-1.5 h-1.5 rounded-full transition-all duration-300
-                ${idx === currentImageIndex 
-                  ? 'bg-white w-4' 
-                  : 'bg-white/60 hover:bg-white'
+                ${
+                  idx === currentImageIndex
+                    ? "bg-white w-4"
+                    : "bg-white/60 hover:bg-white"
                 }
               `}
             />
@@ -169,21 +201,29 @@ const VehicleCard = ({ vehicle, featured = false }) => {
         <div className="grid grid-cols-3 gap-1 mb-3">
           <div className="flex flex-col items-center p-1.5 bg-gray-50 rounded-lg">
             <Fuel className="w-3.5 h-3.5 text-gray-500 mb-0.5" />
-            <span className="text-xs font-medium text-gray-900">{vehicle.fuelType || 'Petrol'}</span>
+            <span className="text-xs font-medium text-gray-900">
+              {vehicle.fuelType || "Petrol"}
+            </span>
           </div>
           <div className="flex flex-col items-center p-1.5 bg-gray-50 rounded-lg">
             <Gauge className="w-3.5 h-3.5 text-gray-500 mb-0.5" />
-            <span className="text-xs font-medium text-gray-900">{vehicle.mileage?.toLocaleString()}km</span>
+            <span className="text-xs font-medium text-gray-900">
+              {vehicle.mileage?.toLocaleString()}km
+            </span>
           </div>
           <div className="flex flex-col items-center p-1.5 bg-gray-50 rounded-lg">
-            <span className="text-xs font-medium text-gray-900">{vehicle.transmission || 'Auto'}</span>
+            <span className="text-xs font-medium text-gray-900">
+              {vehicle.transmission || "Auto"}
+            </span>
             <span className="text-[10px] text-gray-500">Trans</span>
           </div>
         </div>
 
         {/* FR-CD-03: Display listed price (display-only) */}
         <div className="mb-3">
-          <span className="text-[10px] text-gray-500 uppercase tracking-wider">Price</span>
+          <span className="text-[10px] text-gray-500 uppercase tracking-wider">
+            Price
+          </span>
           <div className="text-xl font-bold text-[#3b2a1f]">
             ${vehicle.price?.toLocaleString()}
           </div>
@@ -192,7 +232,7 @@ const VehicleCard = ({ vehicle, featured = false }) => {
         {/* FR-CD-05: Display shipment inclusion status */}
         {/* FR-CD-06: If shipment is excluded, display shipment note */}
         {/* FR-CD-07: Hide shipment information for Ghana-located vehicles */}
-        {vehicle.location === 'canada' && (
+        {vehicle.location === "canada" && (
           <div className="mb-3">
             {vehicle.shipmentIncluded ? (
               <div className="flex items-center text-xs text-green-600">
@@ -204,7 +244,9 @@ const VehicleCard = ({ vehicle, featured = false }) => {
                 <Truck className="w-3 h-3 mr-1" />
                 <span className="font-medium">Shipment excluded</span>
                 {vehicle.shipmentNotes && (
-                  <span className="text-gray-500 ml-1">({vehicle.shipmentNotes})</span>
+                  <span className="text-gray-500 ml-1">
+                    ({vehicle.shipmentNotes})
+                  </span>
                 )}
               </div>
             )}
@@ -228,7 +270,7 @@ const VehicleCard = ({ vehicle, featured = false }) => {
             <Phone className="w-3.5 h-3.5 mr-1" />
             <span className="hidden sm:inline">Call</span>
           </a>
-          
+
           <a
             href={`https://wa.me/1234567890?text=I'm interested in ${vehicle.title} (${vehicle.id})`}
             target="_blank"
@@ -246,7 +288,7 @@ const VehicleCard = ({ vehicle, featured = false }) => {
             <MessageCircle className="w-3.5 h-3.5 mr-1" />
             <span className="hidden sm:inline">WhatsApp</span>
           </a>
-          
+
           <Link
             to={`/cars/${vehicle.id}`}
             onClick={(e) => e.stopPropagation()}
@@ -265,7 +307,7 @@ const VehicleCard = ({ vehicle, featured = false }) => {
         </div>
       </div>
     </Link>
-  )
-}
+  );
+};
 
-export default VehicleCard
+export default VehicleCard;

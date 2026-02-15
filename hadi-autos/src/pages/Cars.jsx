@@ -163,7 +163,7 @@ const Cars = () => {
     <div className="bg-gray-50 min-h-screen py-8 lg:py-12">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-8 mt-20">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
             Available Vehicles
           </h1>

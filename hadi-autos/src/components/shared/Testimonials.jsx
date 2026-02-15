@@ -378,9 +378,9 @@ export default function TestimonialSlider() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: direction === 1 ? -100 : 100 }}
                 transition={{ duration: 0.4 }}
-                className="bg-[#3b2a1f] rounded-xl shadow-md p-6 mx-auto max-w-sm"
+                className="bg-black text-white ring-2 ring-white/20 rounded-xl shadow-md p-6 mx-auto max-w-sm"
               >
-                <Quote className="w-8 h-8 text-blue-500 mb-4" />
+                <Quote className="w-8 h-8 text-white mb-4" />
 
                 <div className="flex mb-4">
                   {[...Array(5)].map((_, i) => (
@@ -388,7 +388,7 @@ export default function TestimonialSlider() {
                       key={i}
                       className={`w-5 h-5 ${
                         i < reviews[currentIndex].rating
-                          ? "text-yellow-400 fill-current"
+                          ? "text-red-800 fill-current"
                           : "text-gray-300"
                       }`}
                     />
