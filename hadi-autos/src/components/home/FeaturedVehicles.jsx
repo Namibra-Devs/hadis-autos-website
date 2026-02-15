@@ -144,18 +144,19 @@ const PremiumCarShowSlider = () => {
             </div>
           </div>
 
-          <Button
-            to="/cars"
-            className="
-               group relative overflow-hidden
-              text-gray-900
-              px-6 py-3 lg:px-8 lg:py-4 rounded-lg font-semibold
-              hover:shadow-2xl hover:scale-105 transition-all cursor-pointer
-            "
-          >
-            <span>All Inventory</span>
-            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
+        <Link
+  to="/cars"
+  className="
+    group relative overflow-hidden inline-flex items-center gap-2
+    text-white bg-black hover:bg-black/60
+    px-6 py-3 lg:px-8 lg:py-4 rounded-lg font-semibold
+    hover:shadow-2xl hover:scale-105 transition-all cursor-pointer
+  "
+>
+  <span>All Inventory</span>
+  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+</Link>
+
         </div>
       </div>
     </section>

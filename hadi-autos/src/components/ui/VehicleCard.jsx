@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { MapPin, Truck, ChevronRight, Heart, Fuel, Gauge, Calendar, ChevronLeft, ChevronRight as ChevronRightIcon, Phone, MessageCircle, FileText } from 'lucide-react'
 import { useState } from 'react'
 import Badge from './Badge'
+import { getVehicleImages, getVehicleMainImage, getVehicleImageFilenames } from '@utils/imageMappings'
 
 const VehicleCard = ({ vehicle, featured = false }) => {
   const [isLiked, setIsLiked] = useState(false)
@@ -9,95 +10,13 @@ const VehicleCard = ({ vehicle, featured = false }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
   
-  // FR-CD-01: Display vehicle image gallery
-  const getVehicleImages = () => {
-    const imageMap = {
-      1: {
-        main: '1.avif',
-        sub1: '2.webp',
-        sub2: '3.webp',
-        sub3: '4.webp',
-        sub4: '5.webp'
-      },
-      2: {
-        main: '3.webp',
-        sub1: '6.avif',
-        sub2: '2.webp',
-        sub3: '4.webp',
-        sub4: '2.webp'
-      },
-      3: {
-        main: '2.webp',
-        sub1: '9.avif',
-        sub2: '3.webp',
-        sub3: '4.webp',
-        sub4: '10.webp'
-      },
-      4: {
-        main: '12.jpg',
-        sub1: '11.webp',
-        sub2: '10.webp',
-        sub3: '1.avif',
-        sub4: '5.webp'
-      },
-      5: {
-        main: '5.webp',
-        sub1: '10.webp',
-        sub2: '12.jpg',
-        sub3: '2.webp',
-        sub4: '9.avif'
-      },
-      6: {
-        main: '7.avif',
-        sub1: '6.avif',
-        sub2: '3.webp',
-        sub3: '8.avif',
-        sub4: '4.webp'
-      },
-      7: {
-        main: '10.webp',
-        sub1: '3.webp',
-        sub2: '2.webp',
-        sub3: '11.webp',
-        sub4: '6.avif'
-      },
-      8: {
-        main: '1.avif',
-        sub1: '10.webp',
-        sub2: '12.jpg',
-        sub3: '2.webp',
-        sub4: '7.avif'
-      },
-      9: {
-        main: '13.webp',
-        sub1: '10.webp',
-        sub2: '12.jpg',
-        sub3: '2.webp',
-        sub4: '7.avif'
-      }
-    }
-    
-    return imageMap[vehicle.id] || {
-      main: 'placeholder-car.jpg',
-      sub1: 'placeholder-car.jpg',
-      sub2: 'placeholder-car.jpg',
-      sub3: 'placeholder-car.jpg',
-      sub4: 'placeholder-car.jpg'
-    }
-  }
-
-  const vehicleImages = getVehicleImages()
-  const imageArray = [
-    vehicleImages.main,
-    vehicleImages.sub1,
-    vehicleImages.sub2,
-    vehicleImages.sub3,
-    vehicleImages.sub4
-  ]
+  // Get all images for this vehicle from centralized mapping
+  const imageFilenames = getVehicleImageFilenames(vehicle.id)
+  const imageArray = imageFilenames.map(filename => `/images/${filename}`)
 
   const currentImage = imageError 
     ? '/images/placeholder-car.jpg' 
-    : `/images/${imageArray[currentImageIndex]}`
+    : imageArray[currentImageIndex]
 
   const nextImage = (e) => {
     e.preventDefault()
@@ -112,15 +31,16 @@ const VehicleCard = ({ vehicle, featured = false }) => {
   }
 
   return (
-    <div 
-      className="group bg-white rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 h-full flex flex-col border border-gray-100"
+    <Link 
+      to={`/cars/${vehicle.id}`}
+      className="block cursor-pointer group bg-white rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 h-full flex flex-col border border-gray-100 no-underline"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => {
         setIsHovered(false)
         setCurrentImageIndex(0)
       }}
     >
-      {/* FR-CD-01: Vehicle Image Gallery */}
+      {/* Vehicle Image Gallery */}
       <div className="relative h-48 overflow-hidden bg-gray-100 flex-shrink-0">
         <img
           src={currentImage}
@@ -295,6 +215,7 @@ const VehicleCard = ({ vehicle, featured = false }) => {
         <div className="mt-auto grid grid-cols-3 gap-2">
           <a
             href="tel:+1234567890"
+            onClick={(e) => e.stopPropagation()}
             className="
               flex items-center justify-center
               bg-red-600 hover:bg-red-800
@@ -312,6 +233,7 @@ const VehicleCard = ({ vehicle, featured = false }) => {
             href={`https://wa.me/1234567890?text=I'm interested in ${vehicle.title} (${vehicle.id})`}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
             className="
               flex items-center justify-center
               bg-red-600 hover:bg-green-800
@@ -326,7 +248,8 @@ const VehicleCard = ({ vehicle, featured = false }) => {
           </a>
           
           <Link
-            to={`/inquiry/${vehicle.id}`}
+            to={`/cars/${vehicle.id}`}
+            onClick={(e) => e.stopPropagation()}
             className="
               flex items-center justify-center
               bg-gray-600 hover:bg-gray-800
@@ -341,7 +264,7 @@ const VehicleCard = ({ vehicle, featured = false }) => {
           </Link>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
