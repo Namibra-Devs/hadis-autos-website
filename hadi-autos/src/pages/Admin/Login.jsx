@@ -128,18 +128,33 @@ const AdminAuth = () => {
 
     // Simulate API call
     setTimeout(() => {
+      // Admin credentials check
       if (
         loginData.email === "admin@hadisautos.com" &&
         loginData.password === "Admin123"
       ) {
-        setSuccess("Login successful! Redirecting...");
+        setSuccess("Login successful! Redirecting to dashboard...");
+
+        // Store admin session
         localStorage.setItem("admin_logged_in", "true");
+        localStorage.setItem("admin_email", loginData.email);
+        localStorage.setItem("admin_role", "administrator");
+
         if (loginData.rememberMe) {
           localStorage.setItem("admin_remember", loginData.email);
         }
-        setTimeout(() => navigate("/admin/dashboard"), 1500);
+
+        // Set session timestamp
+        localStorage.setItem("admin_session_start", Date.now().toString());
+
+        // Redirect to admin dashboard
+        setTimeout(() => {
+          navigate("/admin");
+        }, 1500);
       } else {
-        setError("Invalid email or password");
+        setError(
+          "Invalid email or password. Please use admin@hadisautos.com / Admin123",
+        );
       }
       setLoading(false);
     }, 1500);
@@ -153,15 +168,41 @@ const AdminAuth = () => {
 
     setLoading(true);
 
-    // Simulate API call
+    // Simulate API call for admin account creation
     setTimeout(() => {
+      // In a real app, this would send data to your backend
       setSuccess(
-        "Account created successfully! Please check your email to verify.",
+        "Admin account created successfully! Please check your email to verify.",
       );
-      setTimeout(() => setIsLogin(true), 2000);
+
+      // Clear form
+      setSignupData({
+        fullName: "",
+        email: "",
+        phone: "",
+        password: "",
+        confirmPassword: "",
+        agreeTerms: false,
+      });
+
+      // Switch to login after 2 seconds
+      setTimeout(() => {
+        setIsLogin(true);
+        setSuccess("");
+        // Pre-fill email
+        setLoginData((prev) => ({ ...prev, email: signupData.email }));
+      }, 1000);
+
       setLoading(false);
     }, 1500);
   };
+
+  // Check if already logged in
+  useState(() => {
+    if (localStorage.getItem("admin_logged_in") === "true") {
+      navigate("/admin");
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-900 flex overflow-hidden">
@@ -178,23 +219,27 @@ const AdminAuth = () => {
             src="/images/hero3.jpg"
             alt="Luxury car showroom"
             className="w-full h-full object-cover"
+            onError={(e) => {
+              e.target.src =
+                "https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=1964&q=80";
+            }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-red-black/10 to-black/10" />
+          <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/10 to-black/40" />
         </div>
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col  p-16 w-full">
+        <div className="relative z-10 flex flex-col p-16 w-full">
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ type: "spring", stiffness: 200, delay: 0.3 }}
-            className="flex items-center space-x-4 mb-20"
+            className="flex items-center space-x-4"
           >
-            <div className="flex justify-center mb-6">
+            <div className="flex justify-center">
               <img
                 src="/Logo.jpeg"
                 alt="Hadi's Motors Logo"
-                className="h-14 w-auto object-contain drop-shadow-xl rounded-full"
+                className="h-14 w-auto object-contain drop-shadow-md rounded-full"
               />
             </div>
 
@@ -208,7 +253,7 @@ const AdminAuth = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="space-y-8"
+            className="space-y-8 mt-30"
           >
             <h2 className="text-5xl font-bold text-white leading-tight">
               Admin
@@ -221,17 +266,17 @@ const AdminAuth = () => {
                 {
                   icon: Shield,
                   text: "Secure vehicle management",
-                  color: "transparent",
+                  color: "transparent from-red-500 to-red-900",
                 },
                 {
                   icon: Truck,
                   text: "Track shipments in real-time",
-                  color: "transparent",
+                  color: "transparent from-red-500 to-red-900",
                 },
                 {
                   icon: Car,
                   text: "Manage customer inquiries",
-                  color: "black",
+                  color: "transparent from-red-500 to-red-900",
                 },
               ].map((feature, index) => (
                 <motion.div
@@ -267,10 +312,10 @@ const AdminAuth = () => {
         >
           {/* Header */}
           <div className="text-center mb-8 lg:hidden">
-            <div className="flex justify-center mb-2">
-              <div className="flex justify-center mb-6">
+            <div className="flex justify-center mb-4">
+              <div className="flex justify-center mb-2">
                 <img
-                  src="/Logo.jpeg" 
+                  src="/Logo.jpeg"
                   alt="Hadi's Motors Logo"
                   className="h-14 w-auto object-contain drop-shadow-md rounded-full"
                 />
@@ -317,7 +362,7 @@ const AdminAuth = () => {
                 className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-center space-x-3"
               >
                 <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
-                <p className="text-red-600 text-sm">{error}</p>
+                <p className="text-red-600 text-sm flex-1">{error}</p>
                 <button onClick={() => setError("")} className="ml-auto">
                   <X className="w-4 h-4 text-red-400 hover:text-red-600" />
                 </button>
@@ -332,7 +377,7 @@ const AdminAuth = () => {
                 className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center space-x-3"
               >
                 <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                <p className="text-green-600 text-sm">{success}</p>
+                <p className="text-green-600 text-sm flex-1">{success}</p>
               </motion.div>
             )}
           </AnimatePresence>
@@ -364,6 +409,7 @@ const AdminAuth = () => {
                       }
                       className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#3b2a1f] focus:ring-2 focus:ring-[#3b2a1f]/20 transition-all duration-300 bg-white"
                       placeholder="admin@hadisautos.com"
+                      required
                     />
                   </div>
                 </div>
@@ -383,6 +429,7 @@ const AdminAuth = () => {
                       }
                       className="w-full pl-12 pr-12 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#3b2a1f] focus:ring-2 focus:ring-[#3b2a1f]/20 transition-all duration-300 bg-white"
                       placeholder="••••••••"
+                      required
                     />
                     <button
                       type="button"
@@ -433,7 +480,7 @@ const AdminAuth = () => {
                   disabled={loading}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full py-4 rounded-md font-semibold text-white bg-black hover:from-[#5c483a] hover:to-[#3b2a1f] transition-all duration-300 shadow-sm hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 cursor-pointer"
+                  className="w-full py-4 rounded-md font-semibold text-white bg-gradient-to-r from-red-500 via-black to-red-900 hover:from-[#5c483a] hover:to-[#3b2a1f] transition-all duration-300 shadow-md hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 cursor-pointer"
                 >
                   {loading ? (
                     <>
@@ -442,7 +489,7 @@ const AdminAuth = () => {
                     </>
                   ) : (
                     <>
-                      <span>Sign In</span>
+                      <span>Sign In to Admin</span>
                       <ArrowRight className="w-5 h-5" />
                     </>
                   )}
@@ -501,6 +548,7 @@ const AdminAuth = () => {
                           : "border-gray-200 focus:border-[#3b2a1f] focus:ring-[#3b2a1f]/20"
                       }`}
                       placeholder="John Doe"
+                      required
                     />
                   </div>
                   {errors.fullName && (
@@ -529,6 +577,7 @@ const AdminAuth = () => {
                           : "border-gray-200 focus:border-[#3b2a1f] focus:ring-[#3b2a1f]/20"
                       }`}
                       placeholder="admin@hadisautos.com"
+                      required
                     />
                   </div>
                   {errors.email && (
@@ -555,6 +604,7 @@ const AdminAuth = () => {
                           : "border-gray-200 focus:border-[#3b2a1f] focus:ring-[#3b2a1f]/20"
                       }`}
                       placeholder="+1 (234) 567-8900"
+                      required
                     />
                   </div>
                   {errors.phone && (
@@ -584,6 +634,7 @@ const AdminAuth = () => {
                           : "border-gray-200 focus:border-[#3b2a1f] focus:ring-[#3b2a1f]/20"
                       }`}
                       placeholder="••••••••"
+                      required
                     />
                     <button
                       type="button"
@@ -626,6 +677,7 @@ const AdminAuth = () => {
                           : "border-gray-200 focus:border-[#3b2a1f] focus:ring-[#3b2a1f]/20"
                       }`}
                       placeholder="••••••••"
+                      required
                     />
                     <button
                       type="button"
@@ -660,6 +712,7 @@ const AdminAuth = () => {
                       })
                     }
                     className="mt-1 w-4 h-4 text-[#3b2a1f] border-gray-300 rounded focus:ring-[#3b2a1f]"
+                    required
                   />
                   <div>
                     <p className="text-sm text-gray-600">
@@ -692,7 +745,7 @@ const AdminAuth = () => {
                   disabled={loading}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full py-4 rounded-md font-semibold text-white bg-black hover:from-[#5c483a] hover:to-[#3b2a1f] transition-all duration-300 shadow-sm hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 mt-6 cursor-pointer"
+                  className="w-full py-4 rounded-md font-semibold text-white bg-gradient-to-r from-red-500 via-black to-red-900 hover:from-[#5c483a] hover:to-[#3b2a1f] transition-all duration-300 shadow-md hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 mt-6 cursor-pointer"
                 >
                   {loading ? (
                     <>
@@ -701,7 +754,7 @@ const AdminAuth = () => {
                     </>
                   ) : (
                     <>
-                      <span>Create Account</span>
+                      <span>Create Admin Account</span>
                       <ArrowRight className="w-5 h-5" />
                     </>
                   )}
