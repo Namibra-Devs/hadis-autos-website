@@ -436,7 +436,7 @@ const CarDetails = () => {
                 href={`https://wa.me/1234567890?text=I'm interested in ${vehicle.title} (${vehicle.id})`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center space-x-2 bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105"
+                className="flex items-center justify-center space-x-2 bg-black hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105"
               >
                 <MessageCircle className="w-4 h-4" />
                 <span>WhatsApp</span>
