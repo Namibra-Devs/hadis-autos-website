@@ -5,13 +5,10 @@ import Cars from '@pages/Cars'
 import CarDetails from '@pages/CarDetails'
 import Contact from '@pages/Contact'
 import Login from '@pages/Admin/Login'
-import Dashboard from '@pages/Admin/Dashboard'
-import Vehicles from '@pages/Admin/Vehicles'
-import Inquiries from '@pages/Admin/Inquiries'
-import Content from '@pages/Admin/Content'
 import NotFound from '@pages/NotFound'
-import PrivateRoute from '@components/shared/PrivateRoute'
+import AdminRoutes from './routes/AdminRoutes'
 import './index.css' 
+
 function App() {
   return (
     <Router>
@@ -24,14 +21,11 @@ function App() {
           <Route path="contact" element={<Contact />} />
         </Route>
 
-        {/* Admin Routes */}
+        {/* Admin Login */}
         <Route path="/admin/login" element={<Login />} />
-        <Route path="/admin" element={<PrivateRoute />}>
-          <Route index element={<Dashboard />} />
-          <Route path="vehicles" element={<Vehicles />} />
-          <Route path="inquiries" element={<Inquiries />} />
-          <Route path="content" element={<Content />} />
-        </Route>
+
+        {/* All other admin routes handled by AdminRoutes */}
+        <Route path="/admin/*" element={<AdminRoutes />} />
 
         {/* 404 */}
         <Route path="*" element={<NotFound />} />
