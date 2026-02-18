@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -119,9 +118,15 @@ const AdminLayout = () => {
           <motion.aside
             initial={{ x: -300 }}
             animate={{ x: 0 }}
-            exit={{ x: -300 }}
-            transition={{ type: "spring", damping: 25 }}
-            className="fixed inset-y-0 left-0 w-80 bg-gradient-to-b from-red-700 via-red-900 to-red-900 z-50 shadow-2xl lg:hidden overflow-y-auto"
+            exit={{ x: -400 }}
+            transition={{ type: "spring", damping: 35 }}
+            className=" fixed inset-0
+        w-full h-full
+        bg-gradient-to-b from-red-700 via-red-900 to-red-900
+        z-50
+        shadow-2xl
+        lg:hidden
+        overflow-y-auto"
           >
             <SidebarContent
               navigation={navigation}
@@ -166,14 +171,11 @@ const AdminLayout = () => {
 
       {/* Main Content */}
       <main
-  className={`
-    min-h-screen transition-all duration-300
-  `}
-  style={{
-    marginLeft: sidebarOpen ? '320px' : '80px'
-  }}
->
-
+        className={`
+        transition-all duration-300 min-h-screen
+        lg:ml-80 ${!sidebarOpen ? "lg:!ml-20" : ""}
+      `}
+      >
         {/* Header */}
         <Header
           onMenuClick={() => setMobileSidebarOpen(true)}
