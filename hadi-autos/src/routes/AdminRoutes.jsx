@@ -8,17 +8,18 @@ import Inquiries from '@pages/Admin/Inquiries'
 import InquiryDetails from '@pages/Admin/inquiries/InquiryDetails'
 import Content from '@pages/Admin/Content'
 import ContentHomepage from '@pages/Admin/content/ContentHomepage'
-import Testimonials from '@pages/Admin/content/Testimonials'
-import ContactDetails from '@pages/Admin/content/ContactDetails'
+
 import Analytics from '@pages/Admin/Analytics'
 import Settings from '@pages/Admin/Settings'
 import Profile from '@pages/Admin/Profile'
+import Reports from '@/pages/Admin/Reports' 
 
 const AdminRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<AdminLayout />}>
         <Route index element={<Dashboard />} />
+        <Route path="reports" element={<Reports />} /> 
         
         {/* Vehicle Management */}
         <Route path="vehicles">
@@ -27,6 +28,7 @@ const AdminRoutes = () => {
           <Route path=":id" element={<AddEditVehicle />} />
           <Route path=":id/edit" element={<AddEditVehicle />} />
           <Route path="categories" element={<VehicleCategories />} />
+          <Route path="reports" element={<Reports />} />
         </Route>
 
         {/* Inquiry Management */}
@@ -39,8 +41,7 @@ const AdminRoutes = () => {
         <Route path="content">
           <Route index element={<Content />} />
           <Route path="homepage" element={<ContentHomepage />} />
-          <Route path="testimonials" element={<Testimonials />} />
-          <Route path="contact" element={<ContactDetails />} />
+          
         </Route>
 
         {/* Other Routes */}

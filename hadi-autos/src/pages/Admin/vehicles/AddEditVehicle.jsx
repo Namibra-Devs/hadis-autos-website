@@ -12,14 +12,16 @@ import {
   ArrowLeft,
   Image as ImageIcon,
   AlertCircle,
-  CheckCircle
+  CheckCircle,
+    Maximize2,  
+  Minimize2   
 } from 'lucide-react'
 
 const AddEditVehicle = () => {
   const { id } = useParams()
   const navigate = useNavigate()
   const isEditing = !!id
-
+   const [isFullscreen, setIsFullscreen] = useState(false);
   const [formData, setFormData] = useState({
     title: '',
     make: '',
@@ -85,7 +87,15 @@ const AddEditVehicle = () => {
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
-
+const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen()
+      setIsFullscreen(true)
+    } else {
+      document.exitFullscreen()
+      setIsFullscreen(false)
+    }
+  }
   const handleSubmit = (e) => {
     e.preventDefault()
     if (validateForm()) {
@@ -117,16 +127,27 @@ const AddEditVehicle = () => {
         </div>
         <button
           onClick={handleSubmit}
-          className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-[#3b2a1f] to-[#5c483a] text-white rounded-lg hover:shadow-lg transition-all duration-300"
+          className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-red-600 to-red-900  text-white rounded-md hover:shadow-lg transition-all duration-300 cursor-pointer"
         >
           <Save className="w-5 h-5" />
           <span>{isEditing ? 'Update Vehicle' : 'Save Vehicle'}</span>
         </button>
+           {/* Fullscreen toggle */}
+          <button
+            onClick={toggleFullscreen}
+            className="p-2.5 bg-red-600 border border-red-200 rounded-md hover:bg-red-50 hover:text-red-600 cursor-pointer"
+          >
+            {isFullscreen ? (
+              <Minimize2 className="w-5 h-5 text-white hover:text-red-600" />
+            ) : (
+              <Maximize2 className="w-5 h-5 text-white hover:text-red-600" />
+            )}
+          </button>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Image Upload - FR-VM-03 */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+        <div className="bg-white rounded-md shadow-md p-6 border border-gray-100">
           <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
             <ImageIcon className="w-5 h-5 mr-2 text-[#3b2a1f]" />
             Vehicle Images
@@ -179,7 +200,7 @@ const AddEditVehicle = () => {
         </div>
 
         {/* Basic Information */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+        <div className="bg-white rounded-md shadow-md p-6 border border-gray-100">
           <h2 className="text-lg font-bold text-gray-900 mb-4">Basic Information</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -282,7 +303,7 @@ const AddEditVehicle = () => {
         </div>
 
         {/* Status & Location */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+        <div className="bg-white rounded-md shadow-md p-6 border border-gray-100">
           <h2 className="text-lg font-bold text-gray-900 mb-4">Status & Location</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

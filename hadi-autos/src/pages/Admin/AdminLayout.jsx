@@ -59,6 +59,7 @@ const AdminLayout = () => {
         { name: "All Vehicles", href: "/admin/vehicles" },
         { name: "Add New", href: "/admin/vehicles/new" },
         { name: "Categories", href: "/admin/vehicles/categories" },
+        { name: "Reports", href: "/admin/vehicles/reports" },
       ],
     },
     {
@@ -79,8 +80,7 @@ const AdminLayout = () => {
       current: location.pathname.includes("/admin/content"),
       submenu: [
         { name: "Homepage", href: "/admin/content/homepage" },
-        { name: "Testimonials", href: "/admin/content/testimonials" },
-        { name: "Contact", href: "/admin/content/contact" },
+       
       ],
     },
     {
@@ -387,7 +387,7 @@ const Header = ({
           </div>
 
           {/* Notifications */}
-          <button className="relative p-2 hover:bg-gray-100 rounded-lg">
+          <button className="relative p-2 hover:bg-red-100 rounded-lg cursor-pointer">
             <Bell className="w-5 h-5" />
             <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
           </button>
@@ -396,11 +396,11 @@ const Header = ({
           <div className="relative">
             <button
               onClick={() => setShowUserMenu(!showUserMenu)}
-              className="flex items-center space-x-3 p-2 hover:bg-gray-100 rounded-lg"
+              className="flex items-center space-x-3 p-2 hover:bg-red-100 rounded-lg cursor-pointer"
             >
               <div className="w-8 h-8 rounded-full overflow-hidden border border-gray-200 shadow-sm">
                 <img
-                  src="/images/male2.webp"
+                  src="/images/user7.webp"
                   alt="Admin Profile"
                   className="w-full h-full object-cover"
                 />
